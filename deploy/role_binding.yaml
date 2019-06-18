@@ -1,0 +1,11 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: auto-redirect-uris
+subjects:
+- kind: ServiceAccount
+  name: auto-redirect-uris
+roleRef:
+  kind: Role
+  name: auto-redirect-uris
+  apiGroup: rbac.authorization.k8s.io

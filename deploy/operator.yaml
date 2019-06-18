@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auto-redirect-uris
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: auto-redirect-uris
+  template:
+    metadata:
+      labels:
+        name: auto-redirect-uris
+    spec:
+      serviceAccountName: auto-redirect-uris
+      containers:
+        - name: auto-redirect-uris
+          # Replace this with the built image name
+          image: REPLACE_IMAGE
+          command:
+          - auto-redirect-uris
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "auto-redirect-uris"
