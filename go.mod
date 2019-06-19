@@ -1,8 +1,9 @@
-module github.com/hmcts/auto-redirect-uris
+module github.com/hmcts/auto-reply-urls
 
 require (
 	contrib.go.opencensus.io/exporter/ocagent v0.4.9 // indirect
-	github.com/Azure/go-autorest v11.5.2+incompatible // indirect
+	github.com/Azure/azure-sdk-for-go v30.1.0+incompatible
+	github.com/Azure/go-autorest v11.5.2+incompatible
 	github.com/appscode/jsonpatch v0.0.0-20190108182946-7c0e3b262f30 // indirect
 	github.com/coreos/prometheus-operator v0.26.0 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
@@ -28,6 +29,7 @@ require (
 	go.uber.org/multierr v1.1.0 // indirect
 	go.uber.org/zap v1.9.1 // indirect
 	golang.org/x/time v0.0.0-20180412165947-fbb02b2291d2 // indirect
+	k8s.io/api v0.0.0-20190222213804-5cb15d344471
 	k8s.io/apimachinery v0.0.0-20190221213512-86fb29eff628
 	k8s.io/client-go v2.0.0-alpha.0.0.20181126152608-d082d5923d3c+incompatible
 	k8s.io/code-generator v0.0.0-20180823001027-3dcf91f64f63

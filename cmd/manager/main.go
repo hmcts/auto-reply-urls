@@ -10,8 +10,7 @@ import (
 	// Import all Kubernetes client auth plugins (e.g. Azure, GCP, OIDC, etc.)
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 
-	"github.com/hmcts/auto-redirect-uris/pkg/apis"
-	"github.com/hmcts/auto-redirect-uris/pkg/controller"
+	"github.com/hmcts/auto-reply-urls/pkg/controller"
 
 	"github.com/operator-framework/operator-sdk/pkg/k8sutil"
 	"github.com/operator-framework/operator-sdk/pkg/leader"
@@ -78,7 +77,7 @@ func main() {
 	ctx := context.TODO()
 
 	// Become the leader before proceeding
-	err = leader.Become(ctx, "auto-redirect-uris-lock")
+	err = leader.Become(ctx, "auto-reply-urls-lock")
 	if err != nil {
 		log.Error(err, "")
 		os.Exit(1)
@@ -96,12 +95,6 @@ func main() {
 	}
 
 	log.Info("Registering Components.")
-
-	// Setup Scheme for all resources
-	if err := apis.AddToScheme(mgr.GetScheme()); err != nil {
-		log.Error(err, "")
-		os.Exit(1)
-	}
 
 	// Setup all Controllers
 	if err := controller.AddToManager(mgr); err != nil {

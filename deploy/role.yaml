@@ -1,7 +1,7 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: auto-redirect-uris
+  name: auto-reply-urls
 rules:
 - apiGroups:
   - ""
@@ -36,6 +36,20 @@ rules:
   resources:
   - deployments/finalizers
   resourceNames:
-  - auto-redirect-uris
+  - auto-reply-urls
   verbs:
   - "update"
+- apiGroups:
+    - extensions
+  resources:
+    - ingresses
+  verbs:
+    - list
+    - watch
+    - get
+- apiGroups:
+    - "extensions"
+  resources:
+    - ingresses/status
+  verbs:
+    - update

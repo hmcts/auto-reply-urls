@@ -5,7 +5,7 @@
 
 if ! whoami &>/dev/null; then
   if [ -w /etc/passwd ]; then
-    echo "${USER_NAME:-auto-redirect-uris}:x:$(id -u):$(id -g):${USER_NAME:-auto-redirect-uris} user:${HOME}:/sbin/nologin" >> /etc/passwd
+    echo "${USER_NAME:-auto-reply-urls}:x:$(id -u):$(id -g):${USER_NAME:-auto-reply-urls} user:${HOME}:/sbin/nologin" >> /etc/passwd
   fi
 fi
 

@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auto-redirect-uris
+  name: auto-reply-urls
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: auto-redirect-uris
+      name: auto-reply-urls
   template:
     metadata:
       labels:
-        name: auto-redirect-uris
+        name: auto-reply-urls
     spec:
-      serviceAccountName: auto-redirect-uris
+      serviceAccountName: auto-reply-urls
       containers:
-        - name: auto-redirect-uris
-          # Replace this with the built image name
-          image: REPLACE_IMAGE
+        - name: auto-reply-urls
+          image: hmctspublic.azurecr.io/timj/auto-reply-urls:10
           command:
-          - auto-redirect-uris
+          - auto-reply-urls
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
@@ -30,4 +29,24 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: OPERATOR_NAME
-              value: "auto-redirect-uris"
+              value: "auto-reply-urls"
+            - name: AZURE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: auto-reply-urls-creds
+                  key: azure_client_id
+            - name: AZURE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: auto-reply-urls-creds
+                  key: azure_client_secret
+            - name: AZURE_TENANT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: auto-reply-urls-creds
+                  key: azure_tenant_id
+            - name: APPLICATION_ID
+              valueFrom:
+                secretKeyRef:
+                  name: auto-reply-urls-creds
+                  key: application_id
