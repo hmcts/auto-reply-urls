@@ -21,7 +21,7 @@ $ operator-sdk build hmctspublic.azurecr.io/rpe/auto-reply-urls:version
 Deploying it:
 ```bash
 $ az ad sp create-for-rbac --skip-assignment
-$ kubectl create secret generic --from-literal azure_client_id= --from-literal azure_client_secret= --from-literal azure_tenant_id= --from-literal application_id= 
+$ kubectl create secret generic --from-literal azure_client_id= --from-literal azure_client_secret= --from-literal azure_tenant_id= --from-literal object_id= 
 $ az acr login --name hmctspublic --subscription DCD-DNP-DEV
 $ docker push hmctspublic.azurecr.io/rpe/auto-reply-urls:version
 ```

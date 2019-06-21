@@ -14,7 +14,7 @@ var (
 	clientID      = os.Getenv("AZURE_CLIENT_ID")
 	clientSecret  = os.Getenv("AZURE_CLIENT_SECRET")
 	tenantID      = os.Getenv("AZURE_TENANT_ID")
-	appId         = os.Getenv("APPLICATION_ID")
+	appId         = os.Getenv("OBJECT_ID")
 	cloudName     = "AzurePublicCloud"
 	userAgent     string
 	environment   *azure.Environment
@@ -28,9 +28,9 @@ func ClientID() string {
 	return clientID
 }
 
-func ApplicationID() string {
+func ObjectId() string {
 	if len(clientID) == 0 {
-		panic("\"APPLICATION_ID\" environment variable must be set")
+		panic("\"OBJECT_ID\" environment variable must be set")
 	}
 	return appId
 }
