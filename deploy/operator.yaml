@@ -45,8 +45,8 @@ spec:
                 secretKeyRef:
                   name: auto-reply-urls-creds
                   key: azure_tenant_id
-            - name: APPLICATION_ID
+            - name: OBJECT_ID
               valueFrom:
                 secretKeyRef:
                   name: auto-reply-urls-creds
-                  key: application_id
+                  key: object_id

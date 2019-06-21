@@ -46,7 +46,7 @@ func contains(slice []string, item string) bool {
 func AddRedirectUri(uri string) {
 	ctx := context.Background()
 
-	application, err := GetADApplication(ctx, ApplicationID())
+	application, err := GetADApplication(ctx, ObjectId())
 	fmt.Println("Retrieved application")
 	if err != nil {
 		fmt.Println(err.Error())
@@ -59,7 +59,7 @@ func AddRedirectUri(uri string) {
 		replyUrls = append(replyUrls, uri)
 		fmt.Println("about to update app")
 
-		_, err = UpdateADApplication(ctx, ApplicationID(), replyUrls)
+		_, err = UpdateADApplication(ctx, ObjectId(), replyUrls)
 
 		if err != nil {
 			fmt.Println(err.Error())
